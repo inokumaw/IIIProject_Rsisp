@@ -1,0 +1,5 @@
+C:\Users\iii\Desktop\Project\slnRsisp\cLibRsisp\obj\Debug\cLibRsisp.csprojResolveAssemblyReference.cache
+C:\Users\iii\Desktop\Project\slnRsisp\cLibRsisp\bin\Debug\cLibRsisp.dll
+C:\Users\iii\Desktop\Project\slnRsisp\cLibRsisp\bin\Debug\cLibRsisp.pdb
+C:\Users\iii\Desktop\Project\slnRsisp\cLibRsisp\obj\Debug\cLibRsisp.dll
+C:\Users\iii\Desktop\Project\slnRsisp\cLibRsisp\obj\Debug\cLibRsisp.pdb
