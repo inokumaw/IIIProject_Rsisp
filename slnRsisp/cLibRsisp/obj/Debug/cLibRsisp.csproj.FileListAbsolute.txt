@@ -3,3 +3,12 @@ C:\Users\iii\Desktop\Project\slnRsisp\cLibRsisp\bin\Debug\cLibRsisp.dll
 C:\Users\iii\Desktop\Project\slnRsisp\cLibRsisp\bin\Debug\cLibRsisp.pdb
 C:\Users\iii\Desktop\Project\slnRsisp\cLibRsisp\obj\Debug\cLibRsisp.dll
 C:\Users\iii\Desktop\Project\slnRsisp\cLibRsisp\obj\Debug\cLibRsisp.pdb
+C:\Users\iii\Documents\GitHub\test\slnRsisp\cLibRsisp\bin\Debug\cLibRsisp.dll
+C:\Users\iii\Documents\GitHub\test\slnRsisp\cLibRsisp\bin\Debug\cLibRsisp.pdb
+C:\Users\iii\Documents\GitHub\test\slnRsisp\cLibRsisp\obj\Debug\cLibRsisp.dll
+C:\Users\iii\Documents\GitHub\test\slnRsisp\cLibRsisp\obj\Debug\cLibRsisp.pdb
+C:\Users\iii\Documents\GitHub\test\slnRsisp\cLibRsisp\obj\Debug\cLibRsisp.csprojResolveAssemblyReference.cache
+C:\Users\iii\Documents\GitHub\Rsisp\slnRsisp\cLibRsisp\bin\Debug\cLibRsisp.dll
+C:\Users\iii\Documents\GitHub\Rsisp\slnRsisp\cLibRsisp\bin\Debug\cLibRsisp.pdb
+C:\Users\iii\Documents\GitHub\Rsisp\slnRsisp\cLibRsisp\obj\Debug\cLibRsisp.dll
+C:\Users\iii\Documents\GitHub\Rsisp\slnRsisp\cLibRsisp\obj\Debug\cLibRsisp.pdb

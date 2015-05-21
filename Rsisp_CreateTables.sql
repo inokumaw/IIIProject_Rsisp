@@ -14,7 +14,7 @@ create table Users
 	ID_User			nvarchar(20),
     UserName		nvarchar(20) not null,
     ID_Role			nvarchar(20),
-	UserAccount		nvarchar(50) not null,
+	UserAccount		nvarchar(50) not null unique,
 	UserPassword	nvarchar(50) not null,
 
     primary key (ID_User),
@@ -25,7 +25,7 @@ create table Patients
 (
 	ID_Patient		nvarchar(20),
     PatientName		nvarchar(20) not null,
-	PatientIDCard	nvarchar(20) not null,
+	PatientIDCard	nvarchar(20) not null unique,
 	PatientBirthday	date,
 
     primary key (ID_Patient)
