@@ -1,7 +1,7 @@
 use Rsisp
 go
 
---select all
+--select all Users
 create procedure dbo.getUsers
 as
 	select *
@@ -11,7 +11,7 @@ go
 exec dbo.getUsers
 go
 
---insert user
+--insert User
 create procedure dbo.addUser
 	@UserName nvarchar(20),
 	@ID_Role nvarchar(20),
@@ -42,4 +42,24 @@ go
 exec dbo.addUser 'testMan', 'R3', 'test', '123'
 select * from Users
 delete from dbo.Users where UserAccount = 'test'
+go
+
+--select all Roles
+create procedure dbo.getRoles
+as
+	select *
+	from dbo.Roles
+go
+--test
+exec dbo.getRoles
+go
+
+--select all Patients
+create procedure dbo.getPatients
+as
+	select *
+	from dbo.Patients
+go
+--test
+exec dbo.getPatients
 go
