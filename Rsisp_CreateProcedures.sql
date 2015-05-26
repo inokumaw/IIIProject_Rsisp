@@ -7,9 +7,9 @@ as
 	select *
 	from dbo.Users
 go
---test
-exec dbo.getUsers
-go
+	--test
+		exec dbo.getUsers
+		go
 
 --insert User
 create procedure dbo.addUser
@@ -38,11 +38,44 @@ as
 	insert into dbo.Users(ID_User, UserName, ID_Role, UserAccount, UserPassword)
 	values (@ID_User, @UserName, @ID_Role, @UserAccount, @UserPassword)
 go
---test
-exec dbo.addUser 'testMan', 'R3', 'test', '123'
-select * from Users
-delete from dbo.Users where UserAccount = 'test'
+	--test
+		exec dbo.addUser 'testMan', 'R3', 'test', '123'
+		select * from Users
+		go
+
+--delect User
+create procedure dbo.deleteUserByID
+	@ID_User	nvarchar(20)
+with recompile
+as
+	delete from dbo.Users
+	where ID_User = @ID_User
 go
+	--test
+		exec dbo.deleteUserByID 'U1131'
+		select * from Users
+		go
+
+--update User
+create procedure dbo.updateUserByID
+	@ID_User	nvarchar(20),
+	@UserName nvarchar(20),
+	@ID_Role nvarchar(20),
+	@UserAccount nvarchar(50),
+	@UserPassword nvarchar(50)
+with recompile
+as
+	update dbo.Users
+	set UserName = @UserName,
+		ID_Role = @ID_Role,
+		UserAccount = @UserAccount,
+		UserPassword = @UserPassword
+	where ID_User = @ID_User
+go
+	--test
+		exec dbo.updateUserByID 'U1131', 'tester', 'R5', 'test123', '123456'
+		select * from Users
+		go
 
 --select all Roles
 create procedure dbo.getRoles
@@ -50,9 +83,9 @@ as
 	select *
 	from dbo.Roles
 go
---test
-exec dbo.getRoles
-go
+	--test
+		exec dbo.getRoles
+		go
 
 --select all Patients
 create procedure dbo.getPatients
@@ -60,6 +93,6 @@ as
 	select *
 	from dbo.Patients
 go
---test
-exec dbo.getPatients
-go
+	--test
+		exec dbo.getPatients
+		go
