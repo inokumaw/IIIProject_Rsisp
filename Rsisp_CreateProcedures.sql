@@ -87,6 +87,48 @@ go
 		exec dbo.getRoles
 		go
 
+--insert Role
+create procedure dbo.addRole
+	@ID_Role  nvarchar(20),
+	@RoleName nvarchar(20)	
+with recompile
+as
+	insert into dbo.Roles(ID_Role, RoleName)
+	values (@ID_Role, @RoleName)
+go
+	--test
+		exec dbo.addRole 'R9', 'Saber'
+		select * from Roles
+		go
+
+--delect Role
+create procedure dbo.deleteRoleByID
+	@ID_Role	nvarchar(20)
+with recompile
+as
+	delete from dbo.Roles
+	where ID_Role = @ID_Role
+go
+	--test
+		exec dbo.deleteRoleByID 'R9'
+		select * from Roles
+		go
+
+--update Role
+create procedure dbo.updateRoleByID
+	@ID_Role	nvarchar(20),
+	@RoleName nvarchar(20)
+with recompile
+as
+	update dbo.Roles
+	set RoleName = @RoleName
+	where ID_Role = @ID_Role
+go
+	--test
+		exec dbo.updateRoleByID 'R9', 'Archer'
+		select * from Roles
+		go
+
 --select all Patients
 create procedure dbo.getPatients
 as
