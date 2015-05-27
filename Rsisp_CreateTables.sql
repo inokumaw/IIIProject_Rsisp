@@ -40,15 +40,25 @@ create table AssessStyle
     primary key (ID_Assess)
 )
 
+create table AssessItemGroupStyle
+(
+	ID_Group		int identity(10, 1),
+	GroupName		nvarchar(50) not null,
+
+	primary key (ID_Group)
+)
+
 create table AssessItemStyle
 (
 	ID_Item			int identity(1001, 1), 
 	ID_Assess		int,
+	ID_Group		int,
     ItemName		nvarchar(50) not null,
 	SchemeName		nvarchar(20) not null,    
 
     primary key (ID_Item),
-	foreign key (ID_Assess) references AssessStyle(ID_Assess) on delete cascade
+	foreign key (ID_Assess) references AssessStyle(ID_Assess) on delete cascade,
+	foreign key (ID_Group) references AssessItemGroupStyle(ID_Group) on delete cascade
 )
 
 create table AssessItemContentStyle
