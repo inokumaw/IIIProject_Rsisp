@@ -97,3 +97,9 @@ create table Assess1
     primary key (ID_Assess1),
 	foreign key (ID_User) references Users(ID_User)
 )
+
+create table Schedules
+(
+	ID_Schedule		int, 
+	ID_User			nvarchar(20),
+)
