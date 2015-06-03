@@ -138,3 +138,69 @@ go
 	--test
 		exec dbo.getPatients
 		go
+
+--insert Patient
+create procedure dbo.addPatient	
+	@PatientName		nvarchar(20),
+	@PatientIDCard		nvarchar(20),
+	@PatientBirthday	date,
+	@PatientPhotoPath	nvarchar(100)
+with recompile
+as
+	--找出目前最大的使用者編號並+1
+		declare @ID_Patient nvarchar(20),
+				@ID varchar(20),
+				@i int             
+		
+		select top 1 @ID=ID_Patient
+		from dbo.Patients
+		order by ID_Patient desc
+
+		if @@ROWCOUNT = 0	--如果是第一筆紀錄
+			set @ID_Patient = 'P000001'
+    
+		set @i = CAST(RIGHT(@ID, 6) as int) + 1
+		set @ID = CAST(@i AS varchar)
+		set @ID_Patient = 'P' + REPLICATE('0',6-LEN(@ID)) + @ID
+
+	insert into dbo.Patients(ID_Patient, PatientName, PatientIDCard, PatientBirthday, PatientPhotoPath)
+	values (@ID_Patient, @PatientName, @PatientIDCard, @PatientBirthday, @PatientPhotoPath)
+go
+	--test
+		exec dbo.addPatient 'Marco', 'S123456789', '1990/10/10', './pics/pic.png'
+		select * from Patients
+		go
+
+--delect Patient
+create procedure dbo.deletePatientByID
+	@ID_Patient	nvarchar(20)
+with recompile
+as
+	delete from dbo.Patients
+	where ID_Patient = @ID_Patient
+go
+	--test
+		exec dbo.deletePatientByID 'P100124'
+		select * from Patients
+		go
+
+--update Patient
+create procedure dbo.updatePatientByID
+	@ID_Patient			nvarchar(20),
+	@PatientName		nvarchar(20),
+	@PatientIDCard		nvarchar(20),
+	@PatientBirthday	date,
+	@PatientPhotoPath	nvarchar(100)
+with recompile
+as
+	update dbo.Patients
+	set PatientName = @PatientName,
+		PatientIDCard = @PatientIDCard,
+		PatientBirthday = @PatientBirthday,
+		PatientPhotoPath = @PatientPhotoPath
+	where ID_Patient = @ID_Patient
+go
+	--test
+		exec dbo.updatePatientByID 'P100124', 'Mary', 'S87654321', '1980/08/01', './pics/pic2.png'
+		select * from Patients
+		go
