@@ -1,4 +1,4 @@
-use AssessDB
+use Rsisp
 go
 
 create table Roles
@@ -76,7 +76,9 @@ create table AssessItemContentStyle
 create table Assess1
 (
 	ID_Assess1		int identity(10000001, 1), 
-	ID_User			nvarchar(20),
+	ID_User			nvarchar(20) not null,
+	ID_Patient		nvarchar(20) not null,
+	finishDate		date not null,
     ItemScore1		int not null,
 	ItemScore2		int not null,
 	ItemScore3		int not null,
@@ -95,11 +97,21 @@ create table Assess1
 	ItemText1		nvarchar(100)
 
     primary key (ID_Assess1),
-	foreign key (ID_User) references Users(ID_User)
+	foreign key (ID_User) references Users(ID_User),
+	foreign key (ID_Patient) references Patients(ID_Patient)	
 )
 
 create table Schedules
 (
-	ID_Schedule		int, 
-	ID_User			nvarchar(20),
+	ID_Schedule		int identity(1, 1), 
+	ID_User			nvarchar(20) not null,
+	ID_Patient		nvarchar(20) not null,
+	ID_Assess		int not null,
+	deadLine		date not null,
+	isFinished		bit not null
+
+	primary key (ID_Schedule),
+	foreign key (ID_User) references Users(ID_User),
+	foreign key (ID_Patient) references Patients(ID_Patient),
+	foreign key (ID_Assess) references AssessStyle(ID_Assess),
 )

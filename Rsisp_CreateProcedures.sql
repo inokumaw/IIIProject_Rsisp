@@ -1,6 +1,13 @@
 use Rsisp
 go
 
+select [name],create_date,modify_date
+from sys.all_objects
+where type_desc = 'SQL_STORED_PROCEDURE'
+and substring([name],1,3) not in ('sp_','dt_','xp_') 
+order by 1 desc
+go
+
 --select all Users
 create procedure dbo.getUsers
 as
@@ -203,4 +210,14 @@ go
 	--test
 		exec dbo.updatePatientByID 'P100124', 'Mary', 'S87654321', '1980/08/01', './pics/pic2.png'
 		select * from Patients
+		go
+
+--select all Schedules
+create procedure dbo.getSchedules
+as
+	select *
+	from dbo.Schedules
+go
+	--test
+		exec dbo.getSchedules
 		go
