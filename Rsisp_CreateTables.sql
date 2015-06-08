@@ -100,6 +100,10 @@ create table Assess1
 
 create table Schedules
 (
-	ID_Schedule		int, 
+	ID_Schedule		int identity(10000001, 1), 
 	ID_User			nvarchar(20),
+	ID_Patient		nvarchar(20),
+	ID_Assess		int,
+	deadLine		date,
+
 )
