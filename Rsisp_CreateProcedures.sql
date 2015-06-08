@@ -37,10 +37,12 @@ as
 
 		if @@ROWCOUNT = 0	--如果是第一筆紀錄
 			set @ID_User = 'U0001'
-    
-		set @i = CAST(RIGHT(@ID, 4) as int) + 1
-		set @ID = CAST(@i AS varchar)
-		set @ID_User = 'U' + REPLICATE('0',4-LEN(@ID)) + @ID
+		else
+		begin
+			set @i = CAST(RIGHT(@ID, 4) as int) + 1
+			set @ID = CAST(@i AS varchar)
+			set @ID_User = 'U' + REPLICATE('0',4-LEN(@ID)) + @ID
+		end
 
 	insert into dbo.Users(ID_User, UserName, ID_Role, UserAccount, UserPassword)
 	values (@ID_User, @UserName, @ID_Role, @UserAccount, @UserPassword)
@@ -165,11 +167,12 @@ as
 
 		if @@ROWCOUNT = 0	--如果是第一筆紀錄
 			set @ID_Patient = 'P000001'
-    
-		set @i = CAST(RIGHT(@ID, 6) as int) + 1
-		set @ID = CAST(@i AS varchar)
-		set @ID_Patient = 'P' + REPLICATE('0',6-LEN(@ID)) + @ID
-
+		else
+		begin
+			set @i = CAST(RIGHT(@ID, 6) as int) + 1
+			set @ID = CAST(@i AS varchar)
+			set @ID_Patient = 'P' + REPLICATE('0',6-LEN(@ID)) + @ID
+		end
 	insert into dbo.Patients(ID_Patient, PatientName, PatientIDCard, PatientBirthday, PatientPhotoPath)
 	values (@ID_Patient, @PatientName, @PatientIDCard, @PatientBirthday, @PatientPhotoPath)
 go
