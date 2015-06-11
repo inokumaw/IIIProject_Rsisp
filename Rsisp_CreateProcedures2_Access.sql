@@ -1,50 +1,46 @@
 use Rsisp
 go
 
---select all AssessStyle
+--select all AssessStyles
 create procedure dbo.getAssessStyles
 as
 	select *
 	from dbo.AssessStyle
 go
 	--test
-		exec dbo.getAssessStyles
+		exec dbo.getAssessStyles		
 		go
+		delete from AssessStyle where ID_Assess = 8
 
---select an assess's AssessItemStyle
-create procedure dbo.getAssessItemStyle
-	@ID_Assess int
+--select all AssessItemStyles
+create procedure dbo.getAssessItemStyles
 as
 	select *
 	from dbo.AssessItemStyle
-	where ID_Assess = @ID_Assess
 go
 	--test
-		exec dbo.getAssessItemStyle '1'
+		exec dbo.getAssessItemStyles
 		go
 
---select an item's AssessItemGroupStyles
-create procedure dbo.getAssessItemGroupStyle
-	@ID_Group int
+--select all AssessItemGroupStyles
+create procedure dbo.getAssessItemGroupStyles
 as
 	select *
 	from dbo.AssessItemGroupStyle
-	where ID_Group = @ID_Group
 go
 	--test
-		exec dbo.getAssessItemGroupStyle '10'
+		exec dbo.getAssessItemGroupStyles
 		go
+		delete from AssessItemGroupStyle where ID_Group = 25
 
---select an item's AssessItemContentStyle
-create procedure dbo.getAssessItemContentStyle
-	@ID_Item int
+--select all AssessItemContentStyles
+create procedure dbo.getAssessItemContentStyles
 as
 	select *
 	from dbo.AssessItemContentStyle
-	where ID_Item = @ID_Item
 go
 	--test
-		exec dbo.getAssessItemContentStyle '1001'
+		exec dbo.getAssessItemContentStyles
 		go
 
 --insert an assessStyle
