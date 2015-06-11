@@ -10,7 +10,7 @@ go
 	--test
 		exec dbo.getAssessStyles		
 		go
-		delete from AssessStyle where ID_Assess = 8
+		delete from AssessStyle where ID_Assess > 11
 
 --select all AssessItemStyles
 create procedure dbo.getAssessItemStyles
@@ -31,7 +31,7 @@ go
 	--test
 		exec dbo.getAssessItemGroupStyles
 		go
-		delete from AssessItemGroupStyle where ID_Group = 25
+		delete from AssessItemGroupStyle where ID_Group > 32
 
 --select all AssessItemContentStyles
 create procedure dbo.getAssessItemContentStyles
@@ -71,6 +71,8 @@ go
 	--test
 		exec dbo.addAssessStyle '測試用評估表'
 		select * from AssessStyle
+		go
+		delete from AssessStyle where ID_Assess = 12
 
 --insert an assessItemGroupStyle
 create procedure dbo.addAssessItemGroupStyle
@@ -83,6 +85,7 @@ go
 		exec dbo.addAssessItemGroupStyle '測試用群組'
 		select * from AssessItemGroupStyle
 		go
+		delete from AssessItemGroupStyle where ID_Group = 30
 
 --insert an assessItemStyle
 create procedure dbo.addAssessItemStyle
@@ -102,13 +105,12 @@ as
 		order by SchemeName desc
 
 		if @@ROWCOUNT = 0	--如果是第一筆紀錄
-			set @SchemeName = @SchemeNameType + '1'
+			set @SchemeName = @SchemeNameType + '01'
 		else
 		begin
-			set @i = CAST(RIGHT(@number, 1) as int) + 1
-			if @i = 10
-				set @i = CAST(RIGHT(@number, 2) as int) + 1
-			set @number = CAST(@i AS varchar)
+			set @i = CAST(RIGHT(@number, 2) as int) + 1	
+			if @i < 10
+				set @number = '0' + CAST(@i AS varchar)
 			set @SchemeName = @SchemeNameType + @number
 		end
 
@@ -116,9 +118,10 @@ as
 	values (@ID_Assess, @ID_Group, @ItemName, @SchemeName)
 go
 	--test
-		exec dbo.addAssessItemStyle '3', '20', '測試項目2', 'ItemScore'
+		exec dbo.addAssessItemStyle '2', '19', '測試項目2', 'ItemScore'
 		select * from AssessItemStyle
 		go
+		delete from AssessItemStyle where ID_Item = 1058
 
 --insert an assessItemContentStyle
 create procedure dbo.addAssessItemContentStyle
