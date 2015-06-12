@@ -42,6 +42,7 @@ go
 	--test
 		exec dbo.getAssessItemContentStyles
 		go
+		delete from AssessItemContentStyle where ID_Content >100087
 
 --insert an assessStyle
 create procedure dbo.addAssessStyle
@@ -118,10 +119,10 @@ as
 	values (@ID_Assess, @ID_Group, @ItemName, @SchemeName)
 go
 	--test
-		exec dbo.addAssessItemStyle '2', '19', '測試項目2', 'ItemScore'
+		exec dbo.addAssessItemStyle '2', null, '測試項目2', 'ItemScore'
 		select * from AssessItemStyle
 		go
-		delete from AssessItemStyle where ID_Item = 1058
+		delete from AssessItemStyle where ID_Item = 1116
 
 --insert an assessItemContentStyle
 create procedure dbo.addAssessItemContentStyle

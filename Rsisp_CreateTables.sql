@@ -73,9 +73,9 @@ create table AssessItemContentStyle
 	foreign key (ID_Item) references AssessItemStyle(ID_Item) on delete cascade
 )
 
-create table Assess1
+create table Assess001
 (
-	ID_Assess1		int identity(10000001, 1), 
+	ID_Assess001		int identity(10000001, 1), 
 	ID_User			nvarchar(20) not null,
 	ID_Patient		nvarchar(20) not null,
 	finishDate		date not null,
@@ -96,7 +96,7 @@ create table Assess1
 	ItemScore15		int not null,
 	ItemText1		nvarchar(100)
 
-    primary key (ID_Assess1),
+    primary key (ID_Assess001),
 	foreign key (ID_User) references Users(ID_User),
 	foreign key (ID_Patient) references Patients(ID_Patient)	
 )
