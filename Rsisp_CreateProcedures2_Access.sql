@@ -58,12 +58,12 @@ as
 		order by TableName desc
 
 		if @@ROWCOUNT = 0	--如果是第一筆紀錄
-			set @TableName = 'Assess1'
+			set @TableName = 'Assess001'
 		else
 		begin
-			set @i = CAST(RIGHT(@number, 1) as int) + 1
+			set @i = CAST(RIGHT(@number, 3) as int) + 1
 			set @number = CAST(@i AS varchar)
-			set @TableName = 'Assess' + @number
+			set @TableName = 'Assess' + REPLICATE('0',3-LEN(@number)) + @number			 
 		end
 
 	insert into dbo.AssessStyle(AssessName, TableName)
@@ -110,9 +110,8 @@ as
 		else
 		begin
 			set @i = CAST(RIGHT(@number, 2) as int) + 1	
-			if @i < 10
-				set @number = '0' + CAST(@i AS varchar)
-			set @SchemeName = @SchemeNameType + @number
+			set @number = CAST(@i AS varchar)
+			set @SchemeName = @SchemeNameType + REPLICATE('0',2-LEN(@number)) + @number
 		end
 
 	insert into dbo.AssessItemStyle(ID_Assess, ID_Group, ItemName, SchemeName)
