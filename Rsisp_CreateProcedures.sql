@@ -224,3 +224,16 @@ go
 	--test
 		exec dbo.getSchedules
 		go
+
+--update schedule state to finished
+create procedure dbo.setScheduleIsFinished
+	@ID_Schedule int
+as
+	update dbo.Schedules
+	set isFinished = 1
+	where ID_Schedule = @ID_Schedule
+go
+	--test
+		exec dbo.setScheduleIsFinished 1
+		exec dbo.getSchedules
+		go
