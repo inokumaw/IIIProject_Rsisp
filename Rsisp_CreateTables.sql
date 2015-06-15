@@ -78,7 +78,7 @@ create table Assess001
 	ID_Assess001		int identity(10000001, 1), 
 	ID_User			nvarchar(20) not null,
 	ID_Patient		nvarchar(20) not null,
-	finishDate		date not null,
+	recordDate		date not null,
     ItemScore1		int not null,
 	ItemScore2		int not null,
 	ItemScore3		int not null,
