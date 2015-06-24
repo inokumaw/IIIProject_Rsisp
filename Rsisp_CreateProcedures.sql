@@ -237,3 +237,23 @@ go
 		exec dbo.setScheduleIsFinished 1
 		exec dbo.getSchedules
 		go
+
+--update schedule
+create procedure dbo.updateSchedule
+	@ID_Schedule	int,
+	@ID_User		nvarchar(20),
+	@ID_Patient		nvarchar(20),
+	@ID_Assess		int,
+	@deadLine		date	
+as
+	update dbo.Schedules
+	set ID_User = @ID_User,
+		ID_Patient = @ID_Patient,
+		ID_Assess = @ID_Assess,
+		deadLine = @deadLine
+	where ID_Schedule = @ID_Schedule
+go
+	--test
+		exec dbo.updateSchedule 7, 'U1004', 'P100123', 2, '2015/10/14'
+		exec dbo.getSchedules
+		go
