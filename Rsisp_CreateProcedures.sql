@@ -225,6 +225,21 @@ go
 		exec dbo.getSchedules
 		go
 
+--insert a schedule
+create procedure dbo.addSchedule
+	@ID_User		nvarchar(20),
+	@ID_Patient		nvarchar(20),
+	@ID_Assess		int,
+	@deadLine		date
+as
+	insert into dbo.Schedules(ID_User, ID_Patient, ID_Assess, deadLine, isFinished)
+	values (@ID_User, @ID_Patient, @ID_Assess, @deadLine, 0)
+go
+	--test
+		exec dbo.addSchedule 'U1002', 'P100087', '2', '2015/10/10'
+		exec dbo.getSchedules
+		go
+
 --update schedule state to finished
 create procedure dbo.setScheduleIsFinished
 	@ID_Schedule int

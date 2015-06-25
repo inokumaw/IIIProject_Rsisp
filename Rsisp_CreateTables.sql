@@ -103,14 +103,12 @@ create table Assess001
 
 create table Schedules
 (
-<<<<<<< HEAD
 	ID_Schedule		int identity(10000001, 1), 
 	ID_User			nvarchar(20),
 	ID_Patient		nvarchar(20),
 	ID_Assess		int,
 	deadLine		date,
 
-=======
 	ID_Schedule		int identity(1, 1), 
 	ID_User			nvarchar(20) not null,
 	ID_Patient		nvarchar(20) not null,
@@ -121,6 +119,5 @@ create table Schedules
 	primary key (ID_Schedule),
 	foreign key (ID_User) references Users(ID_User),
 	foreign key (ID_Patient) references Patients(ID_Patient),
-	foreign key (ID_Assess) references AssessStyle(ID_Assess),
->>>>>>> origin/master
+	foreign key (ID_Assess) references AssessStyle(ID_Assess)
 )
